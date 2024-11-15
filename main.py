@@ -25,6 +25,14 @@ bodygear = Element.ClothesElement()
 eyesgear = Element.EyesElement()
 weaponsgear = Element.WeaponElement()
 
+
+pygame.font.init()
+my_font = pygame.font.SysFont('Comic Sans MS',30)
+
+def create_text(screen,tekst,position):
+    paragraph = my_font.render(tekst,False,(255,255,255))
+    screen.bilit(paragraph,position)
+
 #kordy poczatkowe gracza
 plx = 270
 ply = 130
@@ -40,19 +48,32 @@ while game_on == True:
                 game_on = False
 
 
-    
+            
             elif event.key == pygame.K_DOWN:
-                ply += 10
+                ply += 40
 
             elif event.key == pygame.K_UP:
-                ply -= 10
+                ply -= 40
 
             elif event.key == pygame.K_LEFT:
-                plx -= 10
+                plx -= 40
 
             elif event.key == pygame.K_RIGHT:
-                plx += 10
+                plx += 40
+            
 
+
+            elif event.key == pygame.K_q:
+                headgear.choseNext()
+
+            elif event.key == pygame.K_w:
+                weaponsgear.choseNext()
+            
+            elif event.key == pygame.K_e:
+                eyesgear.choseNext()
+            
+            elif event.key == pygame.K_r:
+                bodygear.choseNext()
 
 
 
@@ -68,10 +89,10 @@ while game_on == True:
     screen.blit(character_image,(plx,ply))
 
 
-    screen.blit(headgear.chosenimage(),(plx,ply))
-    screen.blit(bodygear.chosenimage(),(plx,ply))        
-    screen.blit(eyesgear.chosenimage(),(plx,ply))        
-    screen.blit(weaponsgear.chosenimage(),(plx,ply))            
+    screen.blit(headgear.chosenImage(),(plx,ply))
+    screen.blit(bodygear.chosenImage(),(plx,ply))        
+    screen.blit(eyesgear.chosenImage(),(plx,ply))        
+    screen.blit(weaponsgear.chosenImage(),(plx,ply))            
 
 
     pygame.display.flip()
