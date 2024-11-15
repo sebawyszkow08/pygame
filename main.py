@@ -1,5 +1,5 @@
 import pygame
-
+import Element
 
 screen_w = 800
 screen_h = 600
@@ -19,6 +19,13 @@ screen = pygame.display.set_mode([screen_w,screen_h])
 
 clock = pygame.time.Clock()
 
+
+headgear = Element.HeadElement()
+bodygear = Element.ClothesElement()
+eyesgear = Element.EyesElement()
+weaponsgear = Element.WeaponElement()
+
+#kordy poczatkowe gracza
 plx = 270
 ply = 130
 #petla gry
@@ -33,12 +40,13 @@ while game_on == True:
                 game_on = False
 
 
-
+    
             elif event.key == pygame.K_DOWN:
                 ply += 10
 
             elif event.key == pygame.K_UP:
                 ply -= 10
+
             elif event.key == pygame.K_LEFT:
                 plx -= 10
 
@@ -58,6 +66,13 @@ while game_on == True:
     screen.blit(background_image,(0,0))
 
     screen.blit(character_image,(plx,ply))
+
+
+    screen.blit(headgear.chosenimage(),(plx,ply))
+    screen.blit(bodygear.chosenimage(),(plx,ply))        
+    screen.blit(eyesgear.chosenimage(),(plx,ply))        
+    screen.blit(weaponsgear.chosenimage(),(plx,ply))            
+
 
     pygame.display.flip()
 
